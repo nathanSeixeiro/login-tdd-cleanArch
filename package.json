@@ -11,13 +11,19 @@
     "url": "git+https://github.com/nathanSeixeiro/login-tdd-cleanArch.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "nathanSeixeiro",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/nathanSeixeiro/login-tdd-cleanArch/issues"
   },
   "homepage": "https://github.com/nathanSeixeiro/login-tdd-cleanArch#readme",
+  "lint-staged": {
+    "*js": [
+      "standard --fix"
+    ]
+  },
   "devDependencies": {
+    "lint-staged": "^13.2.1",
     "standard": "^17.0.0"
   }
 }
