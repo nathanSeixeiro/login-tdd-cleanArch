@@ -1,0 +1,23 @@
+{
+  "name": "login-tdd-cleanarch",
+  "version": "1.0.0",
+  "description": "system login based in Clean Architecture and TDD for studing",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nathanSeixeiro/login-tdd-cleanArch.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nathanSeixeiro/login-tdd-cleanArch/issues"
+  },
+  "homepage": "https://github.com/nathanSeixeiro/login-tdd-cleanArch#readme",
+  "devDependencies": {
+    "standard": "^17.0.0"
+  }
+}
