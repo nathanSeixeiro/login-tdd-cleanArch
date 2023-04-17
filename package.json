@@ -4,7 +4,7 @@
   "description": "system login based in Clean Architecture and TDD for studing",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "st": "lint-staged",
     "prepare": "husky install"
   },
   "repository": {
