@@ -19,10 +19,16 @@
   "homepage": "https://github.com/nathanSeixeiro/login-tdd-cleanArch#readme",
   "lint-staged": {
     "*js": [
-      "standard --fix"
+      "standard"
     ]
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "devDependencies": {
+    "husky": "^8.0.3",
     "lint-staged": "^13.2.1",
     "standard": "^17.0.0"
   }
