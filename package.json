@@ -20,7 +20,7 @@
   "homepage": "https://github.com/nathanSeixeiro/login-tdd-cleanArch#readme",
   "lint-staged": {
     "*js": [
-      "standard"
+      "standard --fix"
     ]
   },
   "husky": {
