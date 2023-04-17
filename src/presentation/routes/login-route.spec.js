@@ -1,7 +1,7 @@
 class LoginRouter {
   route (req) {
     if (!req.body.email) {
-      return { statusCode: 500 }
+      return { statusCode: 400 }
     }
   }
 }
