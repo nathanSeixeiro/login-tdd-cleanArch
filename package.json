@@ -4,7 +4,8 @@
   "description": "system login based in Clean Architecture and TDD for studing",
   "main": "index.js",
   "scripts": {
-    "st": "lint-staged"
+    "st": "lint-staged",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -25,6 +26,7 @@
   },
   "devDependencies": {
     "husky": "^8.0.3",
+    "jest": "^29.5.0",
     "lint-staged": "^13.2.1",
     "standard": "^17.0.0"
   }
