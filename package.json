@@ -4,8 +4,7 @@
   "description": "system login based in Clean Architecture and TDD for studing",
   "main": "index.js",
   "scripts": {
-    "st": "lint-staged",
-    "prepare": "husky install"
+    "st": "lint-staged"
   },
   "repository": {
     "type": "git",
@@ -14,12 +13,8 @@
   "keywords": [],
   "author": "nathanSeixeiro",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/nathanSeixeiro/login-tdd-cleanArch/issues"
-  },
-  "homepage": "https://github.com/nathanSeixeiro/login-tdd-cleanArch#readme",
   "lint-staged": {
-    "*js": [
+    "*.js": [
       "standard --fix"
     ]
   },
