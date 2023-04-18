@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "st": "lint-staged",
-    "test": "jest --watchAll",
+    "test": "jest",
     "test:staged": "jest"
   },
   "repository": {
