@@ -75,6 +75,6 @@ describe('Login Router', () => {
       }
     }
     const httpRes = sut.route(httpReq)
-    expect(httpRes.email).toBe(401)
+    expect(httpRes.statusCode).toBe(401)
   })
 })
