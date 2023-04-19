@@ -7,9 +7,11 @@ const makeSut = () => {
     auth (email, password) {
       this.email = email
       this.password = password
+      return this.acessToken
     }
   }
   const authUseCaseSpy = new AuthUseCaseSpy()
+  authUseCaseSpy.acessToken = 'valid_token'
   const sut = new LoginRouter(authUseCaseSpy)
   return {
     sut,
@@ -68,7 +70,8 @@ describe('Login Router', () => {
   })
 
   test('Should return 401 when invalid credencials are provided', () => {
-    const { sut } = makeSut()
+    const { sut, authUseCaseSpy } = makeSut()
+    authUseCaseSpy.acessToken = null
     const httpReq = {
       body: {
         email: 'invalid_email@email.com',
@@ -78,6 +81,18 @@ describe('Login Router', () => {
     const httpRes = sut.route(httpReq)
     expect(httpRes.statusCode).toBe(401)
     expect(httpRes.body).toEqual(new UnauthorizedError())
+  })
+
+  test('Should return 200 when valid credencials are provided', () => {
+    const { sut } = makeSut()
+    const httpReq = {
+      body: {
+        email: 'valid_email@email.com',
+        password: 'valid_pass'
+      }
+    }
+    const httpRes = sut.route(httpReq)
+    expect(httpRes.statusCode).toBe(200)
   })
 
   test('Should return 500 if no AuthUseCase is provided', () => {
