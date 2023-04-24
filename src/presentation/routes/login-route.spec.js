@@ -4,6 +4,16 @@ const UnauthorizedError = require('../helpers/unauthorized-error.js')
 const ServerError = require('../helpers/server-error.js')
 
 const makeSut = () => {
+  const authUseCaseSpy = makeAuthUseCase()
+  authUseCaseSpy.acessToken = 'valid_token'
+  const sut = new LoginRouter(authUseCaseSpy)
+  return {
+    sut,
+    authUseCaseSpy
+  }
+}
+
+const makeAuthUseCase = () => {
   class AuthUseCaseSpy {
     auth (email, password) {
       this.email = email
@@ -11,13 +21,16 @@ const makeSut = () => {
       return this.acessToken
     }
   }
-  const authUseCaseSpy = new AuthUseCaseSpy()
-  authUseCaseSpy.acessToken = 'valid_token'
-  const sut = new LoginRouter(authUseCaseSpy)
-  return {
-    sut,
-    authUseCaseSpy
+  return new AuthUseCaseSpy()
+}
+
+const makeAuthUseCaseWithError = () => {
+  class AuthUseCaseSpy {
+    auth () {
+      throw new Error()
+    }
   }
+  return new AuthUseCaseSpy()
 }
 
 describe('Login Router', () => {
@@ -123,5 +136,19 @@ describe('Login Router', () => {
     const httpRes = sut.route(httpReq)
     expect(httpRes.statusCode).toBe(500)
     expect(httpRes.body).toEqual(new ServerError())
+  })
+
+  test('Should return 500 if AuthUseCase throws', () => {
+    const authUseCaseSpy = makeAuthUseCaseWithError()
+    authUseCaseSpy.acessToken = 'valid_token'
+    const sut = new LoginRouter(authUseCaseSpy)
+    const httpReq = {
+      body: {
+        email: 'invalid_email@email.com',
+        password: 'invalid_pass'
+      }
+    }
+    const httpRes = sut.route(httpReq)
+    expect(httpRes.statusCode).toBe(500)
   })
 })
