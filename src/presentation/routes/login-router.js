@@ -5,7 +5,7 @@ class LoginRouter {
     this.authUseCase = authUseCase
   }
 
-  route (httpReq) {
+  async route (httpReq) {
     try {
       const { email, password } = httpReq.body
       if (!email) {
@@ -14,7 +14,7 @@ class LoginRouter {
       if (!password) {
         return HttpResponse.BadRequest('password')
       }
-      const acessToken = this.authUseCase.auth(email, password)
+      const acessToken = await this.authUseCase.auth(email, password)
       if (!acessToken) {
         return HttpResponse.UnauthorizedError()
       }
