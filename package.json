@@ -6,7 +6,7 @@
   "scripts": {
     "st": "lint-staged",
     "test": "jest --watchAll",
-    "test:staged": "jest"
+    "test:staged": "jest --passWithNoTests"
   },
   "repository": {
     "type": "git",
