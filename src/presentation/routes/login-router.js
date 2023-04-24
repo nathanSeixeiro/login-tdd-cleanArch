@@ -21,7 +21,7 @@ class LoginRouter {
       return HttpResponse.UnauthorizedError()
     }
 
-    return HttpResponse.Ok()
+    return HttpResponse.Ok({ acessToken })
   }
 }
 
