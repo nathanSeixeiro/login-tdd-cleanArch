@@ -6,22 +6,24 @@ class LoginRouter {
   }
 
   route (httpReq) {
-    if (!httpReq || !httpReq.body || !this.authUseCase || !this.authUseCase.auth) {
+    try {
+      const { email, password } = httpReq.body
+      if (!email) {
+        return HttpResponse.BadRequest('email')
+      }
+      if (!password) {
+        return HttpResponse.BadRequest('password')
+      }
+      const acessToken = this.authUseCase.auth(email, password)
+      if (!acessToken) {
+        return HttpResponse.UnauthorizedError()
+      }
+
+      return HttpResponse.Ok({ acessToken })
+    } catch (error) {
+      // console.log(error)
       return HttpResponse.ServerError()
     }
-    const { email, password } = httpReq.body
-    if (!email) {
-      return HttpResponse.BadRequest('email')
-    }
-    if (!password) {
-      return HttpResponse.BadRequest('password')
-    }
-    const acessToken = this.authUseCase.auth(email, password)
-    if (!acessToken) {
-      return HttpResponse.UnauthorizedError()
-    }
-
-    return HttpResponse.Ok({ acessToken })
   }
 }
 
