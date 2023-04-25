@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "st": "lint-staged",
-    "test": "jest --watchAll --silent --noStackTrace",
-    "test:staged": "jest --passWithNoTests --findRelatedTests --silen --noStackTrace",
-    "test:ci": "jest --coverage --silent --noStackTrace"
+    "test": "jest  --silent --noStackTrace --passWithNoTests",
+    "test:unit": "npm test -- --watch",
+    "test:staged": "npm test -- --findRelatedTests ",
+    "test:ci": "npm test -- --coverage "
   },
   "repository": {
     "type": "git",
