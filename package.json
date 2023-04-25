@@ -6,7 +6,8 @@
   "scripts": {
     "st": "lint-staged",
     "test": "jest --watchAll --silent --noStackTrace",
-    "test:staged": "jest --passWithNoTests --findRelatedTests --silen --noStackTrace"
+    "test:staged": "jest --passWithNoTests --findRelatedTests --silen --noStackTrace",
+    "test:ci": "jest --coverange --silent --noStackTrace"
   },
   "repository": {
     "type": "git",
